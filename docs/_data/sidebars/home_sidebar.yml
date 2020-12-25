@@ -13,7 +13,7 @@ entries:
       title: module name here
       url: core.html
     - output: web,pdf
-      title: Title
+      title: Pairwise Distances
       url: Pairwise_Distance.html
     output: web
     title: dist_curve

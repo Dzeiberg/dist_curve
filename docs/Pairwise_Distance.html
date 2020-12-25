@@ -1,13 +1,13 @@
 ---
 
-title: Title
+title: Pairwise Distances
 
 
 keywords: fastai
 sidebar: home_sidebar
 
-
-
+summary: "Functions to calculate the pairwise distances between vectors"
+description: "Functions to calculate the pairwise distances between vectors"
 nb_path: "01_Pairwise_Distance.ipynb"
 ---
 <!--
@@ -40,6 +40,13 @@ nb_path: "01_Pairwise_Distance.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -47,7 +54,7 @@ nb_path: "01_Pairwise_Distance.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CUDAKernel object at 0x7f7257a1d890>" class="doc_header"><code>CUDAKernel object at 0x7f7257a1d890></code><a href="" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CUDAKernel object at 0x7f7257a1d890></code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="CUDAKernel object at 0x7f5e60ede290>" class="doc_header"><code>CUDAKernel object at 0x7f5e60ede290></code><a href="" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CUDAKernel object at 0x7f5e60ede290></code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>CUDA Kernel specialized for a given set of argument types. When called, this
 object will validate that the argument types match those for which it is
@@ -67,6 +74,13 @@ specialized, and then launch the kernel on the device.</p>
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -74,7 +88,7 @@ specialized, and then launch the kernel on the device.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="gpu_dist_matrix" class="doc_header"><code>gpu_dist_matrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/pairwise_distance.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gpu_dist_matrix</code>(<strong><code>mat</code></strong>)</p>
+<h4 id="gpu_dist_matrix" class="doc_header"><code>gpu_dist_matrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/pairwise_distance.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gpu_dist_matrix</code>(<strong><code>mat</code></strong>)</p>
 </blockquote>
 <p>calculate the squared euclidian distance between all pairs of rows in a given matrix</p>
 
@@ -106,7 +120,7 @@ specialized, and then launch the kernel on the device.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="CUDAKernel object at 0x7f7257776610>" class="doc_header"><code>CUDAKernel object at 0x7f7257776610></code><a href="" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CUDAKernel object at 0x7f7257776610></code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="CUDAKernel object at 0x7f5e62405110>" class="doc_header"><code>CUDAKernel object at 0x7f5e62405110></code><a href="" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>CUDAKernel object at 0x7f5e62405110></code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>CUDA Kernel specialized for a given set of argument types. When called, this
 object will validate that the argument types match those for which it is
@@ -126,6 +140,13 @@ specialized, and then launch the kernel on the device.</p>
     
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -133,8 +154,9 @@ specialized, and then launch the kernel on the device.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="component_mixture_dist_matrix" class="doc_header"><code>component_mixture_dist_matrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/pairwise_distance.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>component_mixture_dist_matrix</code>(<strong><code>compMat</code></strong>, <strong><code>mixMat</code></strong>)</p>
+<h4 id="component_mixture_dist_matrix" class="doc_header"><code>component_mixture_dist_matrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/pairwise_distance.py#L72" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>component_mixture_dist_matrix</code>(<strong><code>compMat</code></strong>, <strong><code>mixMat</code></strong>)</p>
 </blockquote>
+<p>calculate the squared euclidian distance between pairs of rows in the two given matrices</p>
 
 </div>
 
