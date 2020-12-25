@@ -2,9 +2,13 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"euclidian_distance_matrix": "01_Pairwise_Distance.ipynb",
+         "gpu_dist_matrix": "01_Pairwise_Distance.ipynb",
+         "USE_64": "01_Pairwise_Distance.ipynb",
+         "distance_matrix": "01_Pairwise_Distance.ipynb",
+         "component_mixture_dist_matrix": "01_Pairwise_Distance.ipynb"}
 
-modules = []
+modules = ["pairwise_distance.py"]
 
 doc_url = "https://Dzeiberg.github.io/dist_curve/"
 
