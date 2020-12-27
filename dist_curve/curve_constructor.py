@@ -68,8 +68,9 @@ def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=n
         - num_curves_to_average : int : default 25
             repeat the curve construction process this number of times, averaging over all curves
 
-        - quantiles : float[n_quantiles]
-            after averaging over all curves, use these quantiles of the averaged curve as the final distance curve
+        - quantiles : float[n_quantiles] : default np.arange(0,1,.01)
+            after averaging over all curves, use these quantiles of the averaged curve
+            as the final distance curve
 
     """
     assert compInstances.shape[1] == mixInstances.shape[1], "compInstances and mixInstances should have same sized second dimension"
