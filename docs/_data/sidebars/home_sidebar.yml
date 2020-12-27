@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Pairwise Distances
       url: Pairwise_Distance.html
+    - output: web,pdf
+      title: Curve Constructor
+      url: Curve_Constructor.html
     output: web
     title: dist_curve
   output: web

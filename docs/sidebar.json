@@ -1,6 +1,7 @@
 {
   "dist_curve": {
     "Overview": "/",
-    "Pairwise Distances": "Pairwise_Distance.html"
+    "Pairwise Distances": "Pairwise_Distance.html",
+    "Curve Constructor": "Curve_Constructor.html"
   }
 }
