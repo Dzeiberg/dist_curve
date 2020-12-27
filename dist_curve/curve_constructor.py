@@ -11,19 +11,23 @@ import numba as nb
 # Cell
 @nb.jit((nb.float64[:,:], nb.float64[:,:], nb.boolean[:,:]),nopython=True, parallel=True)
 def makeCurvesFromDistanceMatrix(dist_matrix,curves, mixtureInstanceRemaining):
-    """
-    Construct multiple distance curves, using the precomputed distances
+    """Construct multiple distance curves, using the precomputed distances
+
     Arguments:
         - dist_matrix : float[num_component_instances, num_mixture_instances]
             dist_matrix[i,j] contains the distance between component instance i and mixture instance j
 
         - curves : float[num_curves_to_average, num_mixture_instances]
-            matrix to fill with distance curves (passed initialized matrix because jit in no python mode can't create matrices)
+            matrix to fill with distance curves (passed initialized matrix because jit
+            in no python mode can't create matrices)
 
         - mixtureInstanceRemaining : boolean[num_curves_to_average, num_mixture_instances]
-            boolean matrix indicating whether the given mixture instance should be considered when constructing the curve at that iteration
-            At each iteration, the mixture point that is closest to the sampled component instance is removed from consideration in subsequent iterations
-            Pass matrix initialized to all True in order for all mixture instances to be considered in curve construction
+            boolean matrix indicating whether the given mixture instance should be
+            considered when constructing the curve at that iteration.
+            At each iteration, the mixture point that is closest to the sampled component
+            instance is removed from consideration in subsequent iterations.
+            Pass matrix initialized to all True in order for all mixture instances to be
+            considered in curve construction.
     """
     assert dist_matrix.shape[1] == curves.shape[1], "dist_matrix and curves should have second dimension of size equal to the number of mixture instances"
     assert curves.shape[1] == mixtureInstanceRemaining.shape[1], "mixtureInstanceRemaining should have second dimension of size equal to the number of mixture instances"
@@ -51,7 +55,8 @@ def makeCurvesFromDistanceMatrix(dist_matrix,curves, mixtureInstanceRemaining):
 # Cell
 def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=np.arange(0,1,.01)):
     """
-    Construct the distance curve used to estimate the class prior of the distribution from which the mixture instances were sampled
+    Construct the distance curve used to estimate the class prior
+    of the distribution from which the mixture instances were sampled
 
     Arguments:
         - compInstances : float[num_component_instances, dim]

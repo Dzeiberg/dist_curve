@@ -32,56 +32,6 @@ nb_path: "02_Curve_Constructor.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> line_profiler
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nb</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;weakproxy at 0x7f34ccfddbf0 to Device at 0x7f34cce709d0&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -99,19 +49,23 @@ nb_path: "02_Curve_Constructor.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="makeCurvesFromDistanceMatrix" class="doc_header"><code>makeCurvesFromDistanceMatrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurvesFromDistanceMatrix</code>(<strong><code>dist_matrix</code></strong>, <strong><code>curves</code></strong>, <strong><code>mixtureInstanceRemaining</code></strong>)</p>
 </blockquote>
-<p>Construct multiple distance curves, using the precomputed distances
-Arguments:</p>
+<p>Construct multiple distance curves, using the precomputed distances</p>
+<p>Arguments:</p>
 
 <pre><code>- dist_matrix : float[num_component_instances, num_mixture_instances]
     dist_matrix[i,j] contains the distance between component instance i and mixture instance j
 
 - curves : float[num_curves_to_average, num_mixture_instances]
-    matrix to fill with distance curves (passed initialized matrix because jit in no python mode can't create matrices)
+    matrix to fill with distance curves (passed initialized matrix because jit
+    in no python mode can't create matrices)
 
 - mixtureInstanceRemaining : boolean[num_curves_to_average, num_mixture_instances]
-    boolean matrix indicating whether the given mixture instance should be considered when constructing the curve at that iteration
-    At each iteration, the mixture point that is closest to the sampled component instance is removed from consideration in subsequent iterations
-    Pass matrix initialized to all True in order for all mixture instances to be considered in curve construction</code></pre>
+    boolean matrix indicating whether the given mixture instance should be
+    considered when constructing the curve at that iteration.
+    At each iteration, the mixture point that is closest to the sampled component
+    instance is removed from consideration in subsequent iterations.
+    Pass matrix initialized to all True in order for all mixture instances to be
+    considered in curve construction.</code></pre>
 
 </div>
 
@@ -141,9 +95,10 @@ Arguments:</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="makeCurve" class="doc_header"><code>makeCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L52" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurve</code>()</p>
+<h4 id="makeCurve" class="doc_header"><code>makeCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurve</code>()</p>
 </blockquote>
-<p>Construct the distance curve used to estimate the class prior of the distribution from which the mixture instances were sampled</p>
+<p>Construct the distance curve used to estimate the class prior
+of the distribution from which the mixture instances were sampled</p>
 <p>Arguments:</p>
 
 <pre><code>- compInstances : float[num_component_instances, dim]
