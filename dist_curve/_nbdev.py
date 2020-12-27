@@ -6,7 +6,8 @@ index = {"USE_64": "01_Pairwise_Distance.ipynb",
          "gpu_dist_matrix": "01_Pairwise_Distance.ipynb",
          "component_mixture_dist_matrix": "01_Pairwise_Distance.ipynb",
          "makeCurvesFromDistanceMatrix": "02_Curve_Constructor.ipynb",
-         "makeCurve": "02_Curve_Constructor.ipynb"}
+         "makeCurve": "02_Curve_Constructor.ipynb",
+         "plotCurve": "02_Curve_Constructor.ipynb"}
 
 modules = ["pairwise_distance.py",
            "curve_constructor.py"]
