@@ -2,6 +2,10 @@
 > Fast Nonparametric Estimation of Class Proportions in the Positive Unlabeled Classification Setting
 
 
+## Dependencies
+
+Requires CUDA Toolkit to have been set up
+
 ## Install
 
 `git clone https://github.com/Dzeiberg/dist_curve.git`
@@ -30,5 +34,5 @@ plotCurve(curve)
 ```
 
 
-![png](docs/images/output_3_0.png)
+![png](docs/images/output_4_0.png)
 
