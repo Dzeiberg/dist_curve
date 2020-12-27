@@ -10,7 +10,7 @@ from scipy.spatial.distance import pdist
 
 # Cell
 
-USE_64 = False
+USE_64 = True
 
 if USE_64:
     bits = 64
@@ -47,7 +47,6 @@ def gpu_dist_matrix(mat):
     out2 = cuda.device_array((rows, rows))
     _euclidian_distance_matrix[grid_dim, block_dim](mat2, out2)
     out = out2.copy_to_host(stream=stream)
-
     return out
 
 # Cell
@@ -83,5 +82,4 @@ def component_mixture_dist_matrix(compMat, mixMat):
     out2 = cuda.device_array((compRows, mixRows))
     _pairwise_distance_matrix[grid_dim, block_dim](compMat2, mixMat2, out2)
     out = out2.copy_to_host(stream=stream)
-
     return out

@@ -4,9 +4,12 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"USE_64": "01_Pairwise_Distance.ipynb",
          "gpu_dist_matrix": "01_Pairwise_Distance.ipynb",
-         "component_mixture_dist_matrix": "01_Pairwise_Distance.ipynb"}
+         "component_mixture_dist_matrix": "01_Pairwise_Distance.ipynb",
+         "makeCurvesFromDistanceMatrix": "02_Curve_Constructor.ipynb",
+         "makeCurve": "02_Curve_Constructor.ipynb"}
 
-modules = ["pairwise_distance.py"]
+modules = ["pairwise_distance.py",
+           "curve_constructor.py"]
 
 doc_url = "https://Dzeiberg.github.io/dist_curve/"
 
