@@ -4,7 +4,7 @@ __all__ = ['prepFeatures', 'trainOOBClassifier', 'trainKFoldClassifier', 'getOpt
 
 # Cell
 from sklearn.ensemble import BaggingClassifier
-from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -65,8 +65,8 @@ def trainKFoldClassifier(X,y, modelFactory=lambda: SVC(probability=True, degree=
     transform_scores = np.zeros(y.shape, dtype=float)
     # z-score normalization applied globally rather than within each k-fold iteration
     X,ss = prepFeatures(X)
-    kf = KFold(n_splits=KFoldValue, shuffle=False)
-    for train_indices, val_indices in kf.split(X):
+    kf = StratifiedKFold(n_splits=KFoldValue, shuffle=False)
+    for train_indices, val_indices in kf.split(X,y):
         X_train, y_train = X[train_indices], y[train_indices]
         X_val = X[val_indices]
         clf = modelFactory()
