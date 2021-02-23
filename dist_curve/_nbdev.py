@@ -9,11 +9,16 @@ index = {"USE_64": "01_Pairwise_Distance.ipynb",
          "makeCurve": "02_Curve_Constructor.ipynb",
          "plotCurve": "02_Curve_Constructor.ipynb",
          "getEstimatorModel": "03_get_estimator_model.ipynb",
-         "getTrainedEstimator": "03_get_estimator_model.ipynb"}
+         "getTrainedEstimator": "03_get_estimator_model.ipynb",
+         "prepFeatures": "04_Univariate_Transforms.ipynb",
+         "trainOOBClassifier": "04_Univariate_Transforms.ipynb",
+         "trainKFoldClassifier": "04_Univariate_Transforms.ipynb",
+         "getOptimalTransform": "04_Univariate_Transforms.ipynb"}
 
 modules = ["pairwise_distance.py",
            "curve_constructor.py",
-           "model.py"]
+           "model.py",
+           "transforms.py"]
 
 doc_url = "https://Dzeiberg.github.io/dist_curve/"
 

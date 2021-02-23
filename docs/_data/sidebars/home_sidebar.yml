@@ -15,6 +15,12 @@ entries:
     - output: web,pdf
       title: Curve Constructor
       url: Curve_Constructor.html
+    - output: web,pdf
+      title: Title
+      url: get_estimator_model.html
+    - output: web,pdf
+      title: Transforms
+      url: Univariate_Transforms.html
     output: web
     title: dist_curve
   output: web
