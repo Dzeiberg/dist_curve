@@ -81,7 +81,8 @@ def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=n
     curve = np.zeros((num_curves_to_average, n_mix))
     mixtureInstancesRemaining = np.ones((num_curves_to_average, n_mix),dtype=bool)
     curve = makeCurvesFromDistanceMatrix(dist_matrix, curve, mixtureInstancesRemaining)
-    return np.quantile(np.mean(curve, axis=0),quantiles)
+    #return np.quantile(np.mean(curve, axis=0),quantiles)
+    return np.mean(np.quantile(curve,quantiles,axis=1),axis=0)
 
 # Cell
 import matplotlib.pyplot as plt
