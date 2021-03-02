@@ -21,7 +21,7 @@ def prepFeatures(X):
     return Xz,ss
 
 # Cell
-def trainOOBClassifier(X,y, modelFactory=lambda: DecisionTreeClassifier(),n_estimators=100):
+def trainOOBClassifier(X,y, modelFactory=lambda: DecisionTreeClassifier(),n_estimators=100,n_jobs=10):
     """
     Train ensemble of <n_estimators> models predicting the probability that each
     instance came from the labeled positive, rather than the unlabeled mixture, set.
@@ -39,7 +39,7 @@ def trainOOBClassifier(X,y, modelFactory=lambda: DecisionTreeClassifier(),n_esti
     """
     # z-score normalization is applied to the whole dataset prior to training
     X,ss = prepFeatures(X)
-    clf = BaggingClassifier(n_jobs=-1,base_estimator=modelFactory(), n_estimators=n_estimators,
+    clf = BaggingClassifier(n_jobs=n_jobs,base_estimator=modelFactory(), n_estimators=n_estimators,
                             max_samples=X.shape[0],max_features=X.shape[1], bootstrap=True,
                             bootstrap_features=False, oob_score=True).fit(X,y)
     transform_scores = clf.oob_decision_function_[:,1]
@@ -47,7 +47,7 @@ def trainOOBClassifier(X,y, modelFactory=lambda: DecisionTreeClassifier(),n_esti
     return transform_scores, auc_pu
 
 # Cell
-def trainKFoldClassifier(X,y, modelFactory=lambda: SVC(probability=True, degree=1),KFoldValue=10):
+def trainKFoldClassifier(X,y, modelFactory=lambda: SVC(probability=False, degree=1),KFoldValue=10):
     """
     Train model using K-fold cross-validation
     Required Arguments:
@@ -71,7 +71,7 @@ def trainKFoldClassifier(X,y, modelFactory=lambda: SVC(probability=True, degree=
         X_val = X[val_indices]
         clf = modelFactory()
         clf.fit(X_train, y_train)
-        transform_scores[val_indices] = clf.predict_proba(X_val)[:,1]
+        transform_scores[val_indices] = clf.decision_function(X_val)
     auc_pu = roc_auc_score(y, transform_scores)
     return transform_scores, auc_pu
 
@@ -92,9 +92,9 @@ def getOptimalTransform(X,y):
               ("nn_5",lambda: MLPClassifier(hidden_layer_sizes=(1,1)), 100),
               ("nn_25",lambda: MLPClassifier(hidden_layer_sizes=(1,1)), 100),
               ("rt",lambda: DecisionTreeClassifier(), 1000),
-              ("svm_1",lambda: SVC(kernel="poly", degree=1, probability=True),10),
-              ("svm_2",lambda: SVC(kernel="poly", degree=1, probability=True),10)]
-    for model_name, model_factory, n in tqdm(models,total=len(models),desc="Training univariate transforms"):
+              ("svm_1",lambda: SVC(kernel="poly", degree=1, probability=False),10),
+              ("svm_2",lambda: SVC(kernel="poly", degree=1, probability=False),10)]
+    for model_name, model_factory, n in tqdm(models,total=len(models),desc="Training univariate transforms",leave=False):
         if "svm" in model_name:
             scores, auc = trainKFoldClassifier(X,y,modelFactory=model_factory,KFoldValue=n)
         else:
