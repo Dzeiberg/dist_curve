@@ -1,12 +1,12 @@
 ---
 
-title: Title
+title: Evaluation
 
 keywords: fastai
 sidebar: home_sidebar
 
-
-
+summary: "Evaluation of DistCurve on several datsets"
+description: "Evaluation of DistCurve on several datsets"
 nb_path: "06_Evaluate.ipynb"
 ---
 <!--
@@ -83,7 +83,7 @@ nb_path: "06_Evaluate.ipynb"
                           <span class="n">ds</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">unlabeledScores</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">alphaHat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">curve</span><span class="o">/</span><span class="n">curve</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
         <span class="n">absErrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">alpha</span> <span class="o">-</span> <span class="n">alphaHat</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">absErrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">absErrs</span>
 </pre></div>
 
     </div>
@@ -101,10 +101,13 @@ nb_path: "06_Evaluate.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/data/dzeiberg/ClassPriorEstimation/processedDatasets_partial/*.pkl&quot;</span><span class="p">)</span>
+<span class="n">absErrs</span><span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">files</span><span class="p">,</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.pkl&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">EasyDict</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">getDSAbsErrs</span><span class="p">(</span><span class="n">ds</span><span class="p">))</span>
+    <span class="n">aes</span> <span class="o">=</span> <span class="n">getDSAbsErrs</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+    <span class="n">absErrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">aes</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -117,23 +120,54 @@ nb_path: "06_Evaluate.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>abalone 0.53782743
-mol_bio 0.11683954
-activity_recognition_s1 0.0324565
-activity_recognition_s2 0.011299999
-adult 0.12264328
-airfoil 0.24635682
-anuran 0.01059294
-bank 0.12721941
-casp 0.0057680113
-concrete 0.039381433
-covertype 0.025343755
-epileptic 0.017483015
-gas 0.009295273
-h1b 0.041384708
-housing 0.086588345
-landsat 0.032086167
+<pre>abalone 0.536
+mol_bio 0.121
+activity_recognition_s1 0.032
+activity_recognition_s2 0.011
+adult 0.122
+airfoil 0.211
+anuran 0.011
+bank 0.127
+casp 0.004
+concrete 0.033
+covertype 0.026
+epileptic 0.017
+gas 0.009
+h1b 0.041
+housing 0.085
+landsat 0.032
 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Overall MAE: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">absErrs</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overall MAE: 0.089
 </pre>
 </div>
 </div>
