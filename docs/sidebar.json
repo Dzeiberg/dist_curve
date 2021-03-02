@@ -3,8 +3,9 @@
     "Overview": "/",
     "Pairwise Distances": "/Pairwise_Distance",
     "Curve Constructor": "/Curve_Constructor",
-    "Title": "/Dataset",
+    "Title": "/get_estimator_model",
     "Transforms": "/Univariate_Transforms",
+    "Dataset": "/Dataset",
     "Evaluation": "/Evaluate"
   }
 }

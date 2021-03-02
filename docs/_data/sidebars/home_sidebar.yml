@@ -17,10 +17,13 @@ entries:
       url: /Curve_Constructor
     - output: web,pdf
       title: Title
-      url: /Dataset
+      url: /get_estimator_model
     - output: web,pdf
       title: Transforms
       url: /Univariate_Transforms
+    - output: web,pdf
+      title: Dataset
+      url: /Dataset
     - output: web,pdf
       title: Evaluation
       url: /Evaluate
