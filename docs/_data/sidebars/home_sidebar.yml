@@ -16,7 +16,7 @@ entries:
       title: Curve Constructor
       url: /Curve_Constructor
     - output: web,pdf
-      title: Title
+      title: Estimator Model
       url: /get_estimator_model
     - output: web,pdf
       title: Transforms
