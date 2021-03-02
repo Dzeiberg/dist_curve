@@ -1,9 +1,9 @@
 {
   "dist_curve": {
     "Overview": "/",
-    "Pairwise Distances": "Pairwise_Distance.html",
-    "Curve Constructor": "Curve_Constructor.html",
-    "Title": "get_estimator_model.html",
-    "Transforms": "Univariate_Transforms.html"
+    "Pairwise Distances": "/Pairwise_Distance",
+    "Curve Constructor": "/Curve_Constructor",
+    "Title": "/Evaluate",
+    "Transforms": "/Univariate_Transforms"
   }
 }
