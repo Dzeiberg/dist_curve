@@ -1,11 +1,12 @@
 {
   "dist_curve": {
     "Overview": "/",
-    "Pairwise Distances": "/Pairwise_Distance",
-    "Curve Constructor": "/Curve_Constructor",
-    "Estimator Model": "/get_estimator_model",
-    "Transforms": "/Univariate_Transforms",
-    "Dataset": "/Dataset",
-    "Evaluation": "/Evaluate"
+    "Pairwise Distances": "Pairwise_Distance.html",
+    "Curve Constructor": "Curve_Constructor.html",
+    "Estimator Model": "get_estimator_model.html",
+    "Transforms": "Univariate_Transforms.html",
+    "Dataset": "Dataset.html",
+    "Title": "Make_Train_Data.html",
+    "Evaluation": "Evaluate.html"
   }
 }

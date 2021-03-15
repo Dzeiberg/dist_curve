@@ -11,22 +11,25 @@ entries:
       url: /
     - output: web,pdf
       title: Pairwise Distances
-      url: /Pairwise_Distance
+      url: Pairwise_Distance.html
     - output: web,pdf
       title: Curve Constructor
-      url: /Curve_Constructor
+      url: Curve_Constructor.html
     - output: web,pdf
       title: Estimator Model
-      url: /get_estimator_model
+      url: get_estimator_model.html
     - output: web,pdf
       title: Transforms
-      url: /Univariate_Transforms
+      url: Univariate_Transforms.html
     - output: web,pdf
       title: Dataset
-      url: /Dataset
+      url: Dataset.html
+    - output: web,pdf
+      title: Title
+      url: Make_Train_Data.html
     - output: web,pdf
       title: Evaluation
-      url: /Evaluate
+      url: Evaluate.html
     output: web
     title: dist_curve
   output: web

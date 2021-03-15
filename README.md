@@ -14,7 +14,7 @@ Requires CUDA Toolkit to have been set up
 
 ## Make Curve
 
-```
+```python
 import numpy as np
 from dist_curve.curve_constructor import makeCurve, plotCurve
 
@@ -33,33 +33,22 @@ curve = makeCurve(posInstances, mixInstances,)
 plotCurve(curve)
 ```
 
-
-![png](docs/images/output_4_0.png)
-
-
 # Estimate Class Prior
 
 [Download Model](https://drive.google.com/open?id=1C3-11IXNyB9k7pA-ix1n14tfbeO_oy3N)
 
-```
+```python
 from dist_curve.model import getTrainedEstimator
 ```
 
-```
+```python
 pathToModel = "/data/dzeiberg/ClassPriorEstimation/model.hdf5"
 ```
 
-```
+```python
 model = getTrainedEstimator(pathToModel)
 ```
 
-```
+```python
 model.predict(curve.reshape((1,-1))/curve.sum())
 ```
-
-
-
-
-    array([[0.31434005]], dtype=float32)
-
-
