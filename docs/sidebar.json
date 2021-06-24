@@ -3,7 +3,10 @@
     "Overview": "/",
     "Pairwise Distances": "Pairwise_Distance.html",
     "Curve Constructor": "Curve_Constructor.html",
-    "Title": "get_estimator_model.html",
-    "Transforms": "Univariate_Transforms.html"
+    "Estimator Model": "get_estimator_model.html",
+    "Transforms": "Univariate_Transforms.html",
+    "Dataset": "Dataset.html",
+    "Title": "Make_Train_Data.html",
+    "Evaluation": "Evaluate.html"
   }
 }

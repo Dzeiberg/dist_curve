@@ -16,11 +16,20 @@ entries:
       title: Curve Constructor
       url: Curve_Constructor.html
     - output: web,pdf
-      title: Title
+      title: Estimator Model
       url: get_estimator_model.html
     - output: web,pdf
       title: Transforms
       url: Univariate_Transforms.html
+    - output: web,pdf
+      title: Dataset
+      url: Dataset.html
+    - output: web,pdf
+      title: Title
+      url: Make_Train_Data.html
+    - output: web,pdf
+      title: Evaluation
+      url: Evaluate.html
     output: web
     title: dist_curve
   output: web
