@@ -7,6 +7,7 @@ from .pairwise_distance import component_mixture_dist_matrix
 import numpy as np
 from numba import njit, prange
 import numba as nb
+from scipy.spatial.distance import cdist
 
 # Cell
 @nb.jit((nb.float64[:,:], nb.float64[:,:], nb.boolean[:,:]),nopython=True, parallel=True)
@@ -53,7 +54,7 @@ def makeCurvesFromDistanceMatrix(dist_matrix,curves, mixtureInstanceRemaining):
     return curves
 
 # Cell
-def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=np.arange(0,1,.01)):
+def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=np.arange(0,1,.01),gpu=True):
     """
     Construct the distance curve used to estimate the class prior
     of the distribution from which the mixture instances were sampled
@@ -76,7 +77,10 @@ def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=n
     assert compInstances.shape[1] == mixInstances.shape[1], "compInstances and mixInstances should have same sized second dimension"
     assert num_curves_to_average >= 1, "num_curves_to_average must be at least 1"
     assert (np.array(quantiles) >= 0).all() and (np.array(quantiles) <= 1).all() and len(quantiles) >= 1, "quantiles must be a list of floats in the range [0,1]"
-    dist_matrix = component_mixture_dist_matrix(compInstances, mixInstances)
+    if gpu:
+        dist_matrix = component_mixture_dist_matrix(compInstances, mixInstances)
+    else:
+        dist_matrix = cdist(compInstances,mixInstances,)
     n_mix = mixInstances.shape[0]
     curve = np.zeros((num_curves_to_average, n_mix))
     mixtureInstancesRemaining = np.ones((num_curves_to_average, n_mix),dtype=bool)
