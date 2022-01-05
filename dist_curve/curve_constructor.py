@@ -3,13 +3,6 @@
 __all__ = ['makeCurvesFromDistanceMatrix', 'makeCurve', 'plotCurve']
 
 # Cell
-<<<<<<< HEAD
-=======
-try:
-    from .pairwise_distance import component_mixture_dist_matrix
-except:
-    print("cannot import cuda dependent functions")
->>>>>>> 880542ec12da377c023ffa9d114ef8f9887bc81a
 import numpy as np
 from numba import njit, prange
 import numba as nb
