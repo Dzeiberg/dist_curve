@@ -3,10 +3,6 @@
 __all__ = ['makeCurvesFromDistanceMatrix', 'makeCurve', 'plotCurve']
 
 # Cell
-try:
-    from .pairwise_distance import component_mixture_dist_matrix
-except:
-    print("cannot import cuda dependent functions")
 import numpy as np
 from numba import njit, prange
 import numba as nb
@@ -57,7 +53,8 @@ def makeCurvesFromDistanceMatrix(dist_matrix,curves, mixtureInstanceRemaining):
     return curves
 
 # Cell
-def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=np.arange(0,1,.01),gpu=True):
+from sklearn.metrics import pairwise_distances
+def makeCurve(compInstances, mixInstances, metric="euclidean",num_curves_to_average=25, quantiles=np.arange(0,1,.01),gpu=True):
     """
     Construct the distance curve used to estimate the class prior
     of the distribution from which the mixture instances were sampled
@@ -69,6 +66,10 @@ def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=n
         - mixInstances : float[num_mixture_instances, dim] in range[0,1]
             instances sampled from the mixture distribution
 
+        - metric : string or callable
+            only used if gpu==False
+            see scipy.spatial.distance.cdist for details
+
         - num_curves_to_average : int : default 25
             repeat the curve construction process this number of times, averaging over all curves
 
@@ -77,13 +78,14 @@ def makeCurve(compInstances, mixInstances, num_curves_to_average=25, quantiles=n
             as the final distance curve
 
     """
-    assert compInstances.shape[1] == mixInstances.shape[1], "compInstances and mixInstances should have same sized second dimension"
+#     assert compInstances.shape[1] == mixInstances.shape[1], "compInstances and mixInstances should have same sized second dimension"
     assert num_curves_to_average >= 1, "num_curves_to_average must be at least 1"
     assert (np.array(quantiles) >= 0).all() and (np.array(quantiles) <= 1).all() and len(quantiles) >= 1, "quantiles must be a list of floats in the range [0,1]"
     if gpu:
-        dist_matrix = component_mixture_dist_matrix(compInstances, mixInstances)
+        dist_matrix = pairwise_distances(compInstances, Y=mixInstances,metric=metric,n_jobs=-1)
+#         dist_matrix = component_mixture_dist_matrix(compInstances, mixInstances)
     else:
-        dist_matrix = cdist(compInstances,mixInstances,)
+        dist_matrix = cdist(compInstances,mixInstances,metric=metric)
     n_mix = mixInstances.shape[0]
     curve = np.zeros((num_curves_to_average, n_mix))
     mixtureInstancesRemaining = np.ones((num_curves_to_average, n_mix),dtype=bool)
