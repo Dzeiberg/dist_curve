@@ -26,12 +26,40 @@ nb_path: "02_Curve_Constructor.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>cannot import cuda dependent functions
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>cannot import cuda dependent functions
+</pre>
+</div>
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -47,7 +75,7 @@ nb_path: "02_Curve_Constructor.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="makeCurvesFromDistanceMatrix" class="doc_header"><code>makeCurvesFromDistanceMatrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurvesFromDistanceMatrix</code>(<strong><code>dist_matrix</code></strong>, <strong><code>curves</code></strong>, <strong><code>mixtureInstanceRemaining</code></strong>)</p>
+<h4 id="makeCurvesFromDistanceMatrix" class="doc_header"><code>makeCurvesFromDistanceMatrix</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurvesFromDistanceMatrix</code>(<strong><code>dist_matrix</code></strong>, <strong><code>curves</code></strong>, <strong><code>mixtureInstanceRemaining</code></strong>)</p>
 </blockquote>
 <p>Construct multiple distance curves, using the precomputed distances</p>
 <p>Arguments:</p>
@@ -95,7 +123,7 @@ nb_path: "02_Curve_Constructor.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="makeCurve" class="doc_header"><code>makeCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurve</code>()</p>
+<h4 id="makeCurve" class="doc_header"><code>makeCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L60" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>makeCurve</code>()</p>
 </blockquote>
 <p>Construct the distance curve used to estimate the class prior
 of the distribution from which the mixture instances were sampled</p>
@@ -134,39 +162,6 @@ of the distribution from which the mixture instances were sampled</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curve</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(100,)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -175,7 +170,7 @@ of the distribution from which the mixture instances were sampled</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plotCurve" class="doc_header"><code>plotCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L88" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plotCurve</code>(<strong><code>curve</code></strong>)</p>
+<h4 id="plotCurve" class="doc_header"><code>plotCurve</code><a href="https://github.com/Dzeiberg/dist_curve/tree/master/dist_curve/curve_constructor.py#L95" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plotCurve</code>(<strong><code>curve</code></strong>)</p>
 </blockquote>
 <p>Plot the given distance curve</p>
 
@@ -196,6 +191,58 @@ of the distribution from which the mixture instances were sampled</p>
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">curve2</span> <span class="o">=</span> <span class="n">makeCurve</span><span class="p">(</span><span class="n">posInstances</span><span class="p">,</span> <span class="n">mixInstances</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
- 
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotCurve</span><span class="p">(</span><span class="n">curve2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+</div>
+
 

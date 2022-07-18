@@ -2,15 +2,15 @@
 > Fast Nonparametric Estimation of Class Proportions in the Positive Unlabeled Classification Setting
 
 
-## Dependencies
-
-Requires CUDA Toolkit to have been set up
-
 ## Install
 
-`git clone https://github.com/Dzeiberg/dist_curve.git`
+`conda create -n dist_curve_env python=3.9`
 
-`pip install dist_curve`
+`conda activate dist_curve_env`
+
+`git clone git@github.com:Dzeiberg/dist_curve.git`
+
+`python -m pip install -e dist_curve`
 
 ## Make Curve
 
