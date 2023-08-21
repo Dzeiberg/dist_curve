@@ -35,14 +35,16 @@ plotCurve(curve)
 
 # Estimate Class Prior
 
-[Download Model](https://drive.google.com/open?id=1C3-11IXNyB9k7pA-ix1n14tfbeO_oy3N)
-
+[Download Model](https://zenodo.org/record/8269226/files/model.hdf5)
+```shell
+$: wget https://zenodo.org/record/8269226/files/model.hdf5
+```
 ```python
 from dist_curve.model import getTrainedEstimator
 ```
 
 ```python
-pathToModel = "/data/dzeiberg/ClassPriorEstimation/model.hdf5"
+pathToModel = "./model.hdf5"
 ```
 
 ```python
