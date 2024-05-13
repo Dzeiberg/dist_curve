@@ -39,7 +39,7 @@ def trainOOBClassifier(X,y, modelFactory=lambda: DecisionTreeClassifier(),n_esti
     """
     # z-score normalization is applied to the whole dataset prior to training
     X,ss = prepFeatures(X)
-    clf = BaggingClassifier(n_jobs=n_jobs,base_estimator=modelFactory(), n_estimators=n_estimators,
+    clf = BaggingClassifier(n_jobs=n_jobs,estimator=modelFactory(), n_estimators=n_estimators,
                             max_samples=X.shape[0],max_features=X.shape[1], bootstrap=True,
                             bootstrap_features=False, oob_score=True).fit(X,y)
     transform_scores = clf.oob_decision_function_[:,1]
@@ -89,11 +89,11 @@ def getOptimalTransform(X,y):
     """
     transform_scores, auc_pu = {},{}
     models = [("nn_1",lambda: MLPClassifier(hidden_layer_sizes=(1,1)), 100),
-              ("nn_5",lambda: MLPClassifier(hidden_layer_sizes=(1,1)), 100),
-              ("nn_25",lambda: MLPClassifier(hidden_layer_sizes=(1,1)), 100),
+              ("nn_5",lambda: MLPClassifier(hidden_layer_sizes=(5,5)), 100),
+              ("nn_25",lambda: MLPClassifier(hidden_layer_sizes=(25,25)), 100),
               ("rt",lambda: DecisionTreeClassifier(), 1000),
               ("svm_1",lambda: SVC(kernel="poly", degree=1, probability=False),10),
-              ("svm_2",lambda: SVC(kernel="poly", degree=1, probability=False),10)]
+              ("svm_2",lambda: SVC(kernel="poly", degree=2, probability=False),10)]
     for model_name, model_factory, n in tqdm(models,total=len(models),desc="Training univariate transforms",leave=False):
         if "svm" in model_name:
             scores, auc = trainKFoldClassifier(X,y,modelFactory=model_factory,KFoldValue=n)
